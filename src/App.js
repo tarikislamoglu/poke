@@ -59,10 +59,23 @@ const App = () => {
           placeholder="Search Pokemon"
         />
       </div>
+      <div className="flex flex-wrap py-5 items-center justify-center">
+        {filteredPokemons.map((pokemon) => {
+          return (
+            <button
+              key={pokemon.name}
+              className="border-1 bg-amber-500 text-white border-white p-4 m-2 rounded-md cursor-pointer"
+              onClick={() => handleChoiceClick(pokemon.name)}
+            >
+              {pokemon.name}
+            </button>
+          );
+        })}
+      </div>
       <div className=" flex p-10 flex-col md:flex-row ">
         <div
           onClick={() => setPokeChoice("poke1")}
-          className={`bg-blue-500 cursor-pointer flex flex-col items-center w-full md:mr-4 rounded-md mr-0 mb-4 ${
+          className={`bg-blue-500 cursor-pointer flex flex-col items-center w-full md:mr-4 rounded-md mr-0 mb-4 md:mb-0 ${
             pokeChoice === "poke1" && "border-3 border-white"
           }`}
         >
@@ -96,20 +109,6 @@ const App = () => {
             </p>
           )}
         </div>
-      </div>
-
-      <div className="flex flex-wrap py-5 items-center justify-center">
-        {filteredPokemons.map((pokemon) => {
-          return (
-            <button
-              key={pokemon.name}
-              className="border-1 bg-amber-500 text-white border-white p-4 m-2 rounded-md cursor-pointer"
-              onClick={() => handleChoiceClick(pokemon.name)}
-            >
-              {pokemon.name}
-            </button>
-          );
-        })}
       </div>
     </div>
   );
