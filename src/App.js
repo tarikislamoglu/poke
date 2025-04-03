@@ -110,6 +110,11 @@ const App = () => {
           )}
         </div>
       </div>
+      <div>
+        <button className="p-5 mb-4 bg-blue-500 text-white rounded-md border-2 border-white cursor-pointer">
+          Karşılaştır
+        </button>
+      </div>
     </div>
   );
 };
