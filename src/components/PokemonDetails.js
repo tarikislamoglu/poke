@@ -1,6 +1,6 @@
 import React from "react";
 
-const PokemonDetails = ({ pokemonInfo }) => {
+const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
   const { abilities, height, sprites, stats, weight, types, name } =
     pokemonInfo;
   const pokeName = `${name[0].toUpperCase() + name.slice(1)}`;
@@ -11,7 +11,13 @@ const PokemonDetails = ({ pokemonInfo }) => {
     " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center border-white border-1 ";
   const hClass = "font-bold border-b-white border-b-1 text-center mb-2";
   return (
-    <div className="container mx-auto p-5 bg-blue-500 text-white rounded-md">
+    <div className="container mx-auto p-5 bg-blue-500 text-white rounded-md relative">
+      <button
+        className="p-5 text-white absolute top-2 right-8 cursor-pointer"
+        onClick={() => setPokemonInfo(null)}
+      >
+        X
+      </button>
       <div className={bigBoxLClass}>
         <div className={smallBoxClass}>
           <h2 className={hClass}>{pokeName}</h2>
@@ -19,7 +25,10 @@ const PokemonDetails = ({ pokemonInfo }) => {
       </div>
       <div className={bigBoxSClass}>
         <div className={smallBoxClass}>
-          <img src={sprites.front_default} width={200} height={150} />
+          <img
+            src={sprites.front_default}
+            className="max-w-[250px] max-h-[250px]"
+          />
         </div>
         <div className={smallBoxClass}>
           <h4 className={hClass}>Phsical Informations</h4>

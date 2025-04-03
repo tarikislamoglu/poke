@@ -66,7 +66,10 @@ const App = () => {
       </div>
       <div className="flex flex-col items-center w-full">
         {pokemonInfo ? (
-          <PokemonDetails pokemonInfo={pokemonInfo} />
+          <PokemonDetails
+            pokemonInfo={pokemonInfo}
+            setPokemonInfo={setPokemonInfo}
+          />
         ) : (
           <p className="text-amber-500 bg-amber-100 p-5 rounded-md">
             Detaylı bilgi için pokemon seçiniz
