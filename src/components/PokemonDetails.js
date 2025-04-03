@@ -23,11 +23,11 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
           <h2 className={hClass}>{pokeName}</h2>
         </div>
       </div>
-      <div className={bigBoxSClass}>
+      <div className={`${bigBoxSClass} p-2`}>
         <div className={smallBoxClass}>
           <img
             src={sprites.front_default}
-            className="max-w-[250px] max-h-[250px]"
+            className=" min-w-[200px] min-h-[200px]"
           />
         </div>
         <div className={smallBoxClass}>
