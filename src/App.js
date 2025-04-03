@@ -10,7 +10,7 @@ const App = () => {
     const fetchPokeDatas = async () => {
       try {
         const response = await axios.get(
-          "https://pokeapi.co/api/v2/pokemon?limit=10&offset=0"
+          "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
         );
         setPokemons(response.data.results);
       } catch (err) {
@@ -51,6 +51,18 @@ const App = () => {
           placeholder="Search Pokemon"
         />
       </div>
+      <div className="flex flex-col items-center w-full pt-5">
+        {pokemonInfo ? (
+          <PokemonDetails
+            pokemonInfo={pokemonInfo}
+            setPokemonInfo={setPokemonInfo}
+          />
+        ) : (
+          <p className="text-amber-500 bg-amber-100 p-5 rounded-md">
+            Detaylı bilgi için pokemon seçiniz
+          </p>
+        )}
+      </div>
       <div className="flex flex-wrap py-5 items-center justify-center">
         {filteredPokemons.map((pokemon) => {
           return (
@@ -63,18 +75,6 @@ const App = () => {
             </button>
           );
         })}
-      </div>
-      <div className="flex flex-col items-center w-full">
-        {pokemonInfo ? (
-          <PokemonDetails
-            pokemonInfo={pokemonInfo}
-            setPokemonInfo={setPokemonInfo}
-          />
-        ) : (
-          <p className="text-amber-500 bg-amber-100 p-5 rounded-md">
-            Detaylı bilgi için pokemon seçiniz
-          </p>
-        )}
       </div>
     </div>
   );
