@@ -5,13 +5,13 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
     pokemonInfo;
   const pokeName = `${name[0].toUpperCase() + name.slice(1)}`;
 
-  const bigBoxSClass = "mx-4 rounded-md grid grid-cols-1 sm:grid-cols-2 ";
+  const bigBoxSClass = "mx-4 rounded-md grid grid-cols-1 md:grid-cols-2 ";
   const bigBoxLClass = " mx-4 rounded-md grid grid-cols-1";
   const smallBoxClass =
-    " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center border-white border-1 ";
+    " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center border-white border-1 min-h-[200px]";
   const hClass = "font-bold border-b-white border-b-1 text-center mb-2";
   return (
-    <div className="container mx-auto p-5 bg-blue-500 text-white rounded-md relative">
+    <div className="container mx-auto p-5  text-white rounded-md relative">
       <button
         className="p-5 text-white absolute top-2 right-8 cursor-pointer"
         onClick={() => setPokemonInfo(null)}
@@ -19,7 +19,7 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
         X
       </button>
       <div className={bigBoxLClass}>
-        <div className={smallBoxClass}>
+        <div className="bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center border-white border-1">
           <h2 className={hClass}>{pokeName}</h2>
         </div>
       </div>
@@ -27,7 +27,7 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
         <div className={`${smallBoxClass} p-2`}>
           <img
             src={sprites.front_default}
-            className=" min-w-[200px] min-h-[200px]"
+            className=" max-w-[400px] max-h-[400px]"
           />
         </div>
         <div className={smallBoxClass}>
@@ -69,16 +69,19 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
       <div className={bigBoxLClass}>
         <div className={smallBoxClass}>
           <h4 className={hClass}>Stats</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {stats.map(({ stat, base_stat, id = crypto.randomUUID() }) => {
               return (
-                <div className="flex flex-col justify-baseline sm:justify-end">
-                  <p key={id} className="text-center">
+                <div
+                  key={id}
+                  className="flex flex-col justify-baseline sm:justify-end"
+                >
+                  <p className="text-center">
                     {stat.name}:{base_stat}
                   </p>
                   <input
                     type="range"
-                    value={base_stat}
+                    defaultValue={base_stat}
                     className=" pointer-events-none "
                   />
                 </div>
