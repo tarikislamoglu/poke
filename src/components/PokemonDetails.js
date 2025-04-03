@@ -4,19 +4,25 @@ const PokemonDetails = ({ pokemonInfo }) => {
   const { abilities, height, sprites, stats, weight, types, name } =
     pokemonInfo;
   const pokeName = `${name[0].toUpperCase() + name.slice(1)}`;
+
+  const bigBoxSClass = "mx-4 rounded-md grid grid-cols-1 sm:grid-cols-2 ";
+  const bigBoxLClass = " mx-4 rounded-md grid grid-cols-1";
+  const smallBoxClass =
+    " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center ";
+  const hClass = "font-bold border-b-white border-b-1 text-center ";
   return (
-    <div className="flex flex-col items-center p-10 bg-blue-500 text-white ">
-      <div className=" bg-blue-400 p-5 rounded-md mb-4 w-full justify-center items-center flex">
-        <h2 className="font-bold border-b-white border-b-1">{pokeName}</h2>
+    <div className="container mx-auto p-5 bg-blue-500 text-white rounded-md">
+      <div className={bigBoxLClass}>
+        <div className={smallBoxClass}>
+          <h2 className={hClass}>{pokeName}</h2>
+        </div>
       </div>
-      <div className="flex flex-2/5 ">
-        <div className="flex  h-[250px] flex-1/2 flex-col justify-center items-center  bg-blue-400 p-5 rounded-md mr-4">
+      <div className={bigBoxSClass}>
+        <div className={smallBoxClass}>
           <img src={sprites.front_default} width={200} height={150} />
         </div>
-        <div className="flex h-[250px] flex-1/2 flex-col bg-blue-400 p-5 rounded-md justify-center items-center ">
-          <h4 className="text-center mb-4  border-b-white border-b-1">
-            Phsical Informations
-          </h4>
+        <div className={smallBoxClass}>
+          <h4 className={hClass}>Phsical Informations</h4>
           <div>
             <p className="text-center ">
               Height:{((height * 30.48) / 100).toFixed(2)}m
@@ -25,12 +31,9 @@ const PokemonDetails = ({ pokemonInfo }) => {
           </div>
         </div>
       </div>
-      <div className="flex m-3 flex-1/5 w-full">
-        <div className="flex h-[150px] w-full flex-1/2 flex-col justify-center items-center bg-blue-400 p-5 rounded-md mr-4">
-          <h4 className="text-center mb-4  border-b-white border-b-1">
-            {" "}
-            Abilities
-          </h4>
+      <div className={bigBoxSClass}>
+        <div className={smallBoxClass}>
+          <h4 className={hClass}> Abilities</h4>
           <div>
             {abilities.map(({ ability, id = crypto.randomUUID() }) => {
               return (
@@ -41,9 +44,9 @@ const PokemonDetails = ({ pokemonInfo }) => {
             })}
           </div>
         </div>
-        <div className="flex h-[150px] w-full flex-1/2 flex-col justify-center items-center bg-blue-400 p-5 rounded-md ">
-          <h4 className="text-center mb-4  border-b-white border-b-1">Types</h4>
-          <div className="flex flex-col">
+        <div className={smallBoxClass}>
+          <h4 className={hClass}>Types</h4>
+          <div>
             {types.map(({ type, id = crypto.randomUUID() }) => {
               return (
                 <p className="text-center" key={id}>
@@ -54,13 +57,13 @@ const PokemonDetails = ({ pokemonInfo }) => {
           </div>
         </div>
       </div>
-      <div className="flex flex-3/5 w-full ">
-        <div className="h-[250px] flex-col justify-center items-center bg-blue-400 p-5 rounded-md w-full ">
-          <h4 className="text-center mb-4 border-b-white border-b-1">Stats</h4>
-          <div className="flex flex-col">
-            {stats.map(({ stat, base_stat }) => {
+      <div className={bigBoxLClass}>
+        <div className={smallBoxClass}>
+          <h4 className={hClass}>Stats</h4>
+          <div>
+            {stats.map(({ stat, base_stat, id = crypto.randomUUID() }) => {
               return (
-                <p className="text-center">
+                <p key={id} className="text-center">
                   {stat.name}:{base_stat}
                 </p>
               );
