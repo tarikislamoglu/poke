@@ -41,7 +41,7 @@ const App = () => {
   );
 
   return (
-    <div className="flex flex-col items-center w-full">
+    <div className="flex flex-col items-center">
       <div className="flex items-baseline ">
         <FaSearch className="text-white mr-2 " />
         <input
@@ -51,7 +51,7 @@ const App = () => {
           placeholder="Search Pokemon"
         />
       </div>
-      <div className="flex flex-wrap p-5 items-center justify-center">
+      <div className="flex flex-wrap py-5 items-center justify-center">
         {filteredPokemons.map((pokemon) => {
           return (
             <button

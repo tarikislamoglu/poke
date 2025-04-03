@@ -8,8 +8,8 @@ const PokemonDetails = ({ pokemonInfo }) => {
   const bigBoxSClass = "mx-4 rounded-md grid grid-cols-1 sm:grid-cols-2 ";
   const bigBoxLClass = " mx-4 rounded-md grid grid-cols-1";
   const smallBoxClass =
-    " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center ";
-  const hClass = "font-bold border-b-white border-b-1 text-center ";
+    " bg-blue-400  p-5 rounded-md sm:mx-2 mb-4 flex flex-col justify-center items-center border-white border-1 ";
+  const hClass = "font-bold border-b-white border-b-1 text-center mb-2";
   return (
     <div className="container mx-auto p-5 bg-blue-500 text-white rounded-md">
       <div className={bigBoxLClass}>
