@@ -69,12 +69,19 @@ const PokemonDetails = ({ pokemonInfo, setPokemonInfo }) => {
       <div className={bigBoxLClass}>
         <div className={smallBoxClass}>
           <h4 className={hClass}>Stats</h4>
-          <div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
             {stats.map(({ stat, base_stat, id = crypto.randomUUID() }) => {
               return (
-                <p key={id} className="text-center">
-                  {stat.name}:{base_stat}
-                </p>
+                <div className="flex flex-col justify-baseline sm:justify-end">
+                  <p key={id} className="text-center">
+                    {stat.name}:{base_stat}
+                  </p>
+                  <input
+                    type="range"
+                    value={base_stat}
+                    className=" pointer-events-none "
+                  />
+                </div>
               );
             })}
           </div>
